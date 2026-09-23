@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SENTRA — The Intelligence Layer for Crypto</title>
+<meta name="description" content="Search the chain. Discover what matters. Understand the bigger picture. SENTRA is the intelligence layer for crypto." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%23F5F0E4' stroke-width='1.6'/%3E%3Ccircle cx='16' cy='16' r='8.5' fill='none' stroke='%23F5F0E4' stroke-opacity='.4'/%3E%3Cpath d='M21 11c-.8-1.4-2.6-2.3-5-2.3-2.9 0-4.9 1.5-4.9 3.7 0 4.9 10 2.5 10 7.3 0 2.3-2.2 3.8-5.3 3.8-2.6 0-4.6-1-5.4-2.5' fill='none' stroke='%23F5F0E4' stroke-width='1.8' stroke-linecap='round'/%3E%3Ccircle cx='26.5' cy='9' r='1.6' fill='%236EA8FF'/%3E%3C/svg%3E" />
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div id="bg-orbits" aria-hidden="true"></div>
+
+<header id="site-nav">
+  <a class="brand" href="#/" aria-label="SENTRA home">
+    <svg class="brand-mark" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.4" opacity=".7"/><circle cx="16" cy="16" r="8.5" stroke="currentColor" stroke-width=".9" opacity=".35"/><path d="M21 11c-.8-1.4-2.6-2.3-5-2.3-2.9 0-4.9 1.5-4.9 3.7 0 4.9 10 2.5 10 7.3 0 2.3-2.2 3.8-5.3 3.8-2.6 0-4.6-1-5.4-2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="26.5" cy="9" r="1.6" fill="#6EA8FF"/></svg>
+    <span class="brand-word">SENTRA</span>
+  </a>
+  <div class="nav-search">
+    <input id="global-search" type="text" autocomplete="off" spellcheck="false" placeholder="Search wallets, tokens, txs, protocols…" aria-label="Global search" />
+    <div id="autocomplete" class="autocomplete hidden"></div>
+  </div>
+  <nav class="nav-links">
+    <a href="#/search">SEARCH</a>
+    <a href="#/" data-scroll="live-zone">INTELLIGENCE</a>
+    <a href="#/chains">NETWORKS</a>
+    <a href="#/markets">MARKETS</a>
+    <a href="#/" data-scroll="about-zone">ABOUT</a>
+    <a href="https://t.me/sentraonchain" target="_blank" rel="noopener">COMMUNITY</a>
+    <a id="nav-x" href="#" target="_blank" rel="noopener">X</a>
+  </nav>
+  <a href="#/token-launch" class="launch-link" style="text-decoration:none"><span class="pulse-dot"></span><span id="nav-launch-label">Launch · Fri 13:00 UTC</span></a>
+  <button id="mobile-menu-btn" aria-label="Menu">≡</button>
+</header>
+<div id="mobile-menu" class="hidden">
+  <a href="#/search">SEARCH</a><a href="#/chains">NETWORKS</a><a href="#/markets">MARKETS</a><a href="#/protocols">PROTOCOLS</a><a href="#/token-launch">TOKEN LAUNCH</a><a href="https://t.me/sentraonchain" target="_blank" rel="noopener">COMMUNITY</a>
+</div>
+
+<main id="app" aria-live="polite"><div class="section" style="margin-top:36px"><div class="card"><p class="sub">Loading SENTRA…</p></div></div></main>
+
+<script>
+window.addEventListener("error", function (e) {
+  var a = document.getElementById("app");
+  if (a && !a.dataset.ready) a.innerHTML = '<div class="section" style="margin-top:36px"><div class="error-box"><h3>SENTRA failed to start</h3><p>Serve the sentra/ folder over HTTP (server.ps1 → http://localhost:8080/) so all asset files load.</p></div></div>';
+}, true);
+</script>
+<script src="js/config.js"></script>
+<script src="js/services/errors.js"></script>
+<script src="js/services/market.js"></script>
+<script src="js/services/protocol.js"></script>
+<script src="js/services/blockchain.js"></script>
+<script src="js/services/wallet.js"></script>
+<script src="js/services/tokens.js"></script>
+<script src="js/services/query.js"></script>
+<script src="js/services/search.js"></script>
+<script src="js/services/analytics.js"></script>
+<script src="js/viz.js"></script>
+<script src="js/ui.js"></script>
+
+<footer id="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="brand"><span class="brand-word">SENTRA</span></div>
+      <p class="footer-tag">THE INTELLIGENCE LAYER FOR CRYPTO.<br/>Search. Discover. Understand.</p>
+    </div>
+    <div><h4>SYSTEM</h4><a href="#/search">Search</a><a href="#/chains">Networks</a><a href="#/markets">Markets</a><a href="#/" data-scroll="about-zone">About</a></div>
+    <div><h4>COMMUNITY</h4><a href="https://t.me/sentraonchain" target="_blank" rel="noopener">Telegram</a><a id="footer-x" href="#" target="_blank" rel="noopener">X</a><a href="#/token-launch">Token</a></div>
+    <div><h4>DEVELOPERS</h4><a href="#/admin">Admin &amp; Config</a><span class="footer-note">API keys stay server-side.<br/>See README + .env.example</span></div>
+  </div>
+  <div class="footer-base"><span>SENTRA — SEARCH. DISCOVER. UNDERSTAND.</span><span id="footer-data-stamp"></span></div>
+</footer>
+</body>
+</html>
